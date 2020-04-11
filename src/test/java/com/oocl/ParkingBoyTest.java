@@ -69,4 +69,16 @@ public class ParkingBoyTest {
         assertNull(fetchedCar);
 
     }
+    @Test
+    public void should_not_park_car_when_parking_lot_full() {
+        parkingLot.setCapacity(1);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+        Car car = new Car();
+        parkingBoy.park(car);
+        ParkingTicket parkingTicket = parkingLot.park(new Car());
+
+        assertNull(parkingTicket);
+
+    }
+
 }

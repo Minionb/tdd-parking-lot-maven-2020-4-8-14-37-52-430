@@ -15,9 +15,7 @@ public class ParkingLot {
         this.capacity = capacity;
     }
 
-    public ParkingLot(int capacity){
-        this.capacity = capacity;
-    }
+
 
     public ParkingLot(){
         setCapacity(10);
@@ -36,7 +34,7 @@ public class ParkingLot {
         return parkingTicket;
     }
 
-    public Car fetch(ParkingTicket parkingTicket)throws UnrecognizedParkingTicketException {
+    public Car fetch(ParkingTicket parkingTicket) {
         if (this.parkingTicketCarMap.containsKey(parkingTicket)){
             Car car = this.parkingTicketCarMap.remove(parkingTicket);
             return car;
