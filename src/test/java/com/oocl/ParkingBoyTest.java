@@ -93,5 +93,19 @@ public class ParkingBoyTest {
 
 
     }
+    @Test
+    public void should_throw_exception_when_no_ticket_provided() {
+        expectedException.expect(NoTicketException.class);
+        expectedException.expectMessage("Please provide your parking ticket.");
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+        Car car = new Car();
+        parkingBoy.park(car);
+        ParkingTicket noTicket = null;
+        Car fetchedCar = parkingBoy.fetch(noTicket);
+        assertNull(fetchedCar);
+
+
+    }
+
 
 }
