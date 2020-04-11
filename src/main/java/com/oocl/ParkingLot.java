@@ -15,7 +15,9 @@ public class ParkingLot {
         this.capacity = capacity;
     }
 
-
+    public ParkingLot(int capacity){
+        this.capacity = capacity;
+    }
 
     public ParkingLot(){
         setCapacity(10);
@@ -34,12 +36,15 @@ public class ParkingLot {
         return parkingTicket;
     }
 
-    public Car fetch(ParkingTicket parkingTicket) {
-        if (this.parkingTicketCarMap.containsKey(parkingTicket)){
-            Car car = this.parkingTicketCarMap.remove(parkingTicket);
-            return car;
+    public Car fetch(ParkingTicket parkingTicket)throws UnrecognizedParkingTicketException, NoTicketException {
+        if (!this.parkingTicketCarMap.containsKey(parkingTicket)){
+           throw new UnrecognizedParkingTicketException();
         }
-        return null;
+        if(parkingTicket == null){
+            throw new NoTicketException();
+        }
+        Car car = this.parkingTicketCarMap.remove(parkingTicket);
+        return car;
     }
 
 

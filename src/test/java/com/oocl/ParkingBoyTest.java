@@ -80,5 +80,18 @@ public class ParkingBoyTest {
         assertNull(parkingTicket);
 
     }
+    @Test
+    public void should_throw_exception_when_wrong_ticket() {
+        expectedException.expect(UnrecognizedParkingTicketException.class);
+        expectedException.expectMessage("Unrecognized parking ticket.");
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+        Car car = new Car();
+        parkingBoy.park(car);
+        ParkingTicket incorrectTicket = new ParkingTicket();
+        Car fetchedCar = parkingBoy.fetch(incorrectTicket);
+        assertNull(fetchedCar);
+
+
+    }
 
 }
