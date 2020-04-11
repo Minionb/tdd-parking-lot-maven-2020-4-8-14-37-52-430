@@ -104,5 +104,18 @@ public class ParkingBoyTest {
 
     }
 
+    @Test
+    public void should_throw_exception_when_parking_lot_full() {
+        expectedException.expect(NotEnoughPositionException.class);
+        expectedException.expectMessage("Not enough position.");
+        parkingLot.setCapacity(1);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+        Car car = new Car();
+        parkingBoy.park(car);
+        ParkingTicket parkingTicket = parkingLot.park(new Car());
+
+        assertNull(parkingTicket);
+
+    }
 
 }

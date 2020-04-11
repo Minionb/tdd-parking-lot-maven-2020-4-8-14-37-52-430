@@ -26,10 +26,10 @@ public class ParkingLot {
     public boolean isFull(){
         return this.getCapacity() <= parkingTicketCarMap.size();
     }
-    public ParkingTicket park(Car car){
+    public ParkingTicket park(Car car) throws NotEnoughPositionException{
 
         if (isFull()){
-            return null;
+            throw new NotEnoughPositionException();
         }
         ParkingTicket parkingTicket = new ParkingTicket();
         this.parkingTicketCarMap.put(parkingTicket, car);
