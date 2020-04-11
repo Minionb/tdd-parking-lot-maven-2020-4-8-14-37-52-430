@@ -7,13 +7,18 @@ public class ParkingBoy {
     private List<ParkingLot> parkingLots = new ArrayList<>();
     private ParkingLot parkingLot;
 
+    public List<ParkingLot> getParkingLots() {
+        return parkingLots;
+    }
+
+
     public ParkingBoy(ParkingLot... parkingLots){
         this.parkingLots.addAll((Arrays.asList(parkingLots)));
     }
 
 
     public ParkingTicket park(Car car){
-       ParkingLot parkingLotSelection = this.parkingLots.stream().filter(parkingLot -> !parkingLot.isFull()).findFirst().get();
+       ParkingLot parkingLotSelection = this.parkingLots.stream().filter(parkingLot -> !parkingLot.isFull()).findFirst().orElse(null);
         return parkingLotSelection.park(car);
     }
 

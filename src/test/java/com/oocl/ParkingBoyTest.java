@@ -11,6 +11,7 @@ import static org.junit.Assert.*;
 
 public class ParkingBoyTest {
     private ParkingLot parkingLot;
+
     @Before
     public void setUp() throws Exception{
         parkingLot = new ParkingLot();
@@ -75,5 +76,16 @@ public class ParkingBoyTest {
         assertNull(parkingTicket);
 
     }
+    @Test
+    public void should_park_to_second_parking_lot_when_the_first_parking_lot_is_full(){
+        ParkingLot firstParkingLot = new ParkingLot(1);
+        ParkingLot secondParkingLot = new ParkingLot();
+        ParkingBoy parkingBoy = new ParkingBoy(firstParkingLot,secondParkingLot);
+        parkingBoy.park(new Car());
 
+        Car car = new Car();
+        ParkingTicket parkingTicket = parkingBoy.park(car);
+        Car fetchedCar = secondParkingLot.fetch(parkingTicket);
+        assertEquals(car,fetchedCar);
+    }
 }
