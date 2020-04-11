@@ -37,49 +37,7 @@ public class ParkingBoyTest {
         assertEquals(car,fetchedCarFromParkingLot);
 
     }
-    @Test
-    public void should_not_return_car_when_wrong_ticket() {
-        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
-        Car car = new Car();
-        parkingBoy.park(car);
-        ParkingTicket incorrectTicket = new ParkingTicket();
-        Car fetchedCar = parkingBoy.fetch(incorrectTicket);
-        assertNull(fetchedCar);
 
-    }
-
-    @Test
-    public void should_not_return_car_when_no_ticket() {
-        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
-        Car car = new Car();
-        parkingBoy.park(car);
-        ParkingTicket noTicket = null;
-        Car fetchedCar = parkingBoy.fetch(noTicket);
-        assertNull(fetchedCar);
-
-    }
-
-    @Test
-    public void should_not_return_car_when_ticket_used() {
-        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
-        Car car = new Car();
-        ParkingTicket parkingTicket = parkingBoy.park(car);
-        parkingBoy.fetch(parkingTicket);
-        Car fetchedCar = parkingBoy.fetch(parkingTicket);
-        assertNull(fetchedCar);
-
-    }
-    @Test
-    public void should_not_park_car_when_parking_lot_full() {
-        parkingLot.setCapacity(1);
-        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
-        Car car = new Car();
-        parkingBoy.park(car);
-        ParkingTicket parkingTicket = parkingLot.park(new Car());
-
-        assertNull(parkingTicket);
-
-    }
     @Test
     public void should_throw_exception_when_wrong_ticket() {
         expectedException.expect(UnrecognizedParkingTicketException.class);
