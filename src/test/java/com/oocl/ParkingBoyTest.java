@@ -102,7 +102,6 @@ public class ParkingBoyTest {
         Car fetchedCar = parkingBoy.fetch(noTicket);
         assertNull(fetchedCar);
 
-
     }
 
 
