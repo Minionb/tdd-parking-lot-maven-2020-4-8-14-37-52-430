@@ -58,4 +58,15 @@ public class ParkingBoyTest {
         assertNull(fetchedCar);
 
     }
+
+    @Test
+    public void should_not_return_car_when_ticket_used() {
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+        Car car = new Car();
+        ParkingTicket parkingTicket = parkingBoy.park(car);
+        parkingBoy.fetch(parkingTicket);
+        Car fetchedCar = parkingBoy.fetch(parkingTicket);
+        assertNull(fetchedCar);
+
+    }
 }
