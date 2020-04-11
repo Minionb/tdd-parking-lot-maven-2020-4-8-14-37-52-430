@@ -38,7 +38,7 @@ public class ParkingBoyTest {
 
     }
     @Test
-    public void should_not_return_car_when_wrong_ticket_or_no_ticket() {
+    public void should_not_return_car_when_wrong_ticket() {
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
         Car car = new Car();
         parkingBoy.park(car);
@@ -48,5 +48,14 @@ public class ParkingBoyTest {
 
     }
 
+    @Test
+    public void should_not_return_car_when_no_ticket() {
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+        Car car = new Car();
+        parkingBoy.park(car);
+        ParkingTicket noTicket = null;
+        Car fetchedCar = parkingBoy.fetch(noTicket);
+        assertNull(fetchedCar);
 
+    }
 }
