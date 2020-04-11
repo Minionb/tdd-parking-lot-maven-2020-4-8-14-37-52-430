@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
+import sun.security.krb5.internal.Ticket;
 
 import static org.junit.Assert.*;
 
@@ -36,5 +37,16 @@ public class ParkingBoyTest {
         assertEquals(car,fetchedCarFromParkingLot);
 
     }
+    @Test
+    public void should_not_return_car_when_wrong_ticket_or_no_ticket() {
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+        Car car = new Car();
+        parkingBoy.park(car);
+        ParkingTicket incorrectTicket = new ParkingTicket();
+        Car fetchedCar = parkingBoy.fetch(incorrectTicket);
+        assertNull(fetchedCar);
+
+    }
+
 
 }

@@ -37,11 +37,11 @@ public class ParkingLot {
     }
 
     public Car fetch(ParkingTicket parkingTicket)throws UnrecognizedParkingTicketException {
-        if (!this.parkingTicketCarMap.containsKey(parkingTicket)){
-           throw new UnrecognizedParkingTicketException();
+        if (this.parkingTicketCarMap.containsKey(parkingTicket)){
+            Car car = this.parkingTicketCarMap.remove(parkingTicket);
+            return car;
         }
-        Car car = this.parkingTicketCarMap.remove(parkingTicket);
-        return car;
+        return null;
     }
 
 
