@@ -100,5 +100,18 @@ public class ParkingBoyTest {
         Car fetchedCar = secondParkingLot.fetch(parkingTicket);
         assertEquals(car,fetchedCar);
     }
+    @Test
+    public void should_super_smart_parking_boy_park_car_to_parking_lot_with_larger_available_position(){
+        ParkingLot firstParkingLot = new ParkingLot();
+        ParkingLot secondParkingLot = new ParkingLot();
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(firstParkingLot,secondParkingLot);
 
+        for (int index = 0; index<4; index++){
+            firstParkingLot.park(new Car());
+        }
+        Car car = new Car();
+        ParkingTicket parkingTicket = superSmartParkingBoy.park(car);
+        Car fetchedCar = secondParkingLot.fetch(parkingTicket);
+        assertEquals(car,fetchedCar);
+    }
 }
