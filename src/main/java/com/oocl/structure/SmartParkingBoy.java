@@ -1,8 +1,8 @@
-package com.oocl;
+package com.oocl.structure;
 
-import java.util.ArrayList;
+import com.oocl.exception.NotEnoughPositionException;
+
 import java.util.Comparator;
-import java.util.List;
 
 public class SmartParkingBoy extends ParkingBoy {
     public SmartParkingBoy(ParkingLot... parkingLot) {

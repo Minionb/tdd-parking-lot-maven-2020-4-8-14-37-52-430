@@ -1,6 +1,8 @@
-package com.oocl;
+package com.oocl.structure;
 
-import java.lang.reflect.Array;
+import com.oocl.exception.NotEnoughPositionException;
+import com.oocl.exception.UnrecognizedParkingTicketException;
+
 import java.util.*;
 
 public class ParkingBoy {

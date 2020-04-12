@@ -1,4 +1,4 @@
-package com.oocl;
+package com.oocl.exception;
 
 public class NoTicketException extends RuntimeException {
     public NoTicketException() {

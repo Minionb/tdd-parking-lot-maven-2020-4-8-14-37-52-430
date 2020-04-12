@@ -1,4 +1,6 @@
-package com.oocl;
+package com.oocl.structure;
+
+import com.oocl.exception.NotEnoughPositionException;
 
 import java.util.Comparator;
 

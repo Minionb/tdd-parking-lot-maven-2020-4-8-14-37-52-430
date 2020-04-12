@@ -1,11 +1,14 @@
 package com.oocl;
 
+import com.oocl.exception.NoTicketException;
+import com.oocl.exception.NotEnoughPositionException;
+import com.oocl.exception.UnrecognizedParkingTicketException;
+import com.oocl.structure.*;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
-import sun.security.krb5.internal.Ticket;
 
 import static org.junit.Assert.*;
 

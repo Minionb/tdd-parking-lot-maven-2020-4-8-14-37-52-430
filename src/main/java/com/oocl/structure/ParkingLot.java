@@ -1,4 +1,8 @@
-package com.oocl;
+package com.oocl.structure;
+
+import com.oocl.exception.NoTicketException;
+import com.oocl.exception.NotEnoughPositionException;
+import com.oocl.exception.UnrecognizedParkingTicketException;
 
 import java.util.HashMap;
 import java.util.Map;
