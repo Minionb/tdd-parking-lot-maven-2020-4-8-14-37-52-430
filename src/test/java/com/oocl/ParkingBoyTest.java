@@ -14,7 +14,7 @@ public class ParkingBoyTest {
     private int Default_Parking_Lot_Capacity = 10;
 
     @Before
-    public void setUp() throws Exception{
+    public void setUp() throws Exception {
         parkingLot = new ParkingLot();
 
     }
@@ -28,6 +28,7 @@ public class ParkingBoyTest {
         Assert.assertNotNull(parkingTicket);
 
     }
+
     @Test
     public void should_return_car_when_parking_boy_fetch_car_with_parking_ticket() {
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
@@ -36,7 +37,7 @@ public class ParkingBoyTest {
 
         Car fetchedCarFromParkingLot = parkingLot.fetch(parkingTicket);
 
-        assertEquals(car,fetchedCarFromParkingLot);
+        assertEquals(car, fetchedCarFromParkingLot);
 
     }
 
@@ -53,6 +54,7 @@ public class ParkingBoyTest {
 
 
     }
+
     @Test
     public void should_throw_exception_when_no_ticket_provided() {
         expectedException.expect(NoTicketException.class);
@@ -77,41 +79,43 @@ public class ParkingBoyTest {
         assertNull(parkingTicket);
 
     }
+
     @Test
-    public void should_park_to_second_parking_lot_when_the_first_parking_lot_is_full(){
+    public void should_park_to_second_parking_lot_when_the_first_parking_lot_is_full() {
         ParkingLot firstParkingLot = new ParkingLot(1);
         ParkingLot secondParkingLot = new ParkingLot();
-        ParkingBoy parkingBoy = new ParkingBoy(firstParkingLot,secondParkingLot);
+        ParkingBoy parkingBoy = new ParkingBoy(firstParkingLot, secondParkingLot);
         parkingBoy.park(new Car());
         Car car = new Car();
         ParkingTicket parkingTicket = parkingBoy.park(car);
         Car fetchedCar = secondParkingLot.fetch(parkingTicket);
-        assertEquals(car,fetchedCar);
+        assertEquals(car, fetchedCar);
     }
 
     @Test
-    public void should_smart_parking_boy_park_car_to_parking_lot_with_more_space_left(){
+    public void should_smart_parking_boy_park_car_to_parking_lot_with_more_space_left() {
         ParkingLot firstParkingLot = new ParkingLot(8);
         ParkingLot secondParkingLot = new ParkingLot(10);
-        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(firstParkingLot,secondParkingLot);
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(firstParkingLot, secondParkingLot);
 
         Car car = new Car();
         ParkingTicket parkingTicket = smartParkingBoy.park(car);
         Car fetchedCar = secondParkingLot.fetch(parkingTicket);
-        assertEquals(car,fetchedCar);
+        assertEquals(car, fetchedCar);
     }
+
     @Test
-    public void should_super_smart_parking_boy_park_car_to_parking_lot_with_larger_available_position(){
+    public void should_super_smart_parking_boy_park_car_to_parking_lot_with_larger_available_position() {
         ParkingLot firstParkingLot = new ParkingLot();
         ParkingLot secondParkingLot = new ParkingLot();
-        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(firstParkingLot,secondParkingLot);
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(firstParkingLot, secondParkingLot);
 
-        for (int index = 0; index<4; index++){
+        for (int index = 0; index < 4; index++) {
             firstParkingLot.park(new Car());
         }
         Car car = new Car();
         ParkingTicket parkingTicket = superSmartParkingBoy.park(car);
         Car fetchedCar = secondParkingLot.fetch(parkingTicket);
-        assertEquals(car,fetchedCar);
+        assertEquals(car, fetchedCar);
     }
 }

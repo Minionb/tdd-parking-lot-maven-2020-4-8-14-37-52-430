@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-public class SmartParkingBoy extends ParkingBoy{
+public class SmartParkingBoy extends ParkingBoy {
     public SmartParkingBoy(ParkingLot... parkingLot) {
         super(parkingLot);
     }
@@ -14,7 +14,7 @@ public class SmartParkingBoy extends ParkingBoy{
 
         ParkingLot parkingLotSelection = getParkingLots().stream().max(Comparator.comparing(parkingLot -> parkingLot.getEmptyPosition())).get();
 
-        if(parkingLotSelection == null){
+        if (parkingLotSelection == null) {
             throw new NotEnoughPositionException();
         }
         return parkingLotSelection.park(car);
