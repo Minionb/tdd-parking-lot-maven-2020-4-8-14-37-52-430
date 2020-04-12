@@ -11,6 +11,7 @@ import static org.junit.Assert.*;
 
 public class ParkingBoyTest {
     private ParkingLot parkingLot;
+    private int Default_Parking_Lot_Capacity = 10;
 
     @Before
     public void setUp() throws Exception{
@@ -82,10 +83,22 @@ public class ParkingBoyTest {
         ParkingLot secondParkingLot = new ParkingLot();
         ParkingBoy parkingBoy = new ParkingBoy(firstParkingLot,secondParkingLot);
         parkingBoy.park(new Car());
-
         Car car = new Car();
         ParkingTicket parkingTicket = parkingBoy.park(car);
         Car fetchedCar = secondParkingLot.fetch(parkingTicket);
         assertEquals(car,fetchedCar);
     }
+
+    @Test
+    public void should_smart_parking_boy_park_car_to_parking_lot_with_more_space_left(){
+        ParkingLot firstParkingLot = new ParkingLot(8);
+        ParkingLot secondParkingLot = new ParkingLot(10);
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(firstParkingLot,secondParkingLot);
+
+        Car car = new Car();
+        ParkingTicket parkingTicket = smartParkingBoy.park(car);
+        Car fetchedCar = secondParkingLot.fetch(parkingTicket);
+        assertEquals(car,fetchedCar);
+    }
+
 }

@@ -5,7 +5,6 @@ import java.util.*;
 
 public class ParkingBoy {
     private List<ParkingLot> parkingLots = new ArrayList<>();
-    private ParkingLot parkingLot;
 
     public List<ParkingLot> getParkingLots() {
         return parkingLots;
@@ -17,8 +16,12 @@ public class ParkingBoy {
     }
 
 
-    public ParkingTicket park(Car car){
-       ParkingLot parkingLotSelection = this.parkingLots.stream().filter(parkingLot -> !parkingLot.isFull()).findFirst().orElse(null);
+    public ParkingTicket park(Car car)throws NotEnoughPositionException{
+        ParkingLot parkingLotSelection = this.parkingLots.stream().filter(parkingLot -> !parkingLot.isFull()).findFirst().orElse(null);
+
+       if(parkingLotSelection == null){
+           throw new NotEnoughPositionException();
+       }
         return parkingLotSelection.park(car);
     }
 

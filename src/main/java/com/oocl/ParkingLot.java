@@ -5,7 +5,12 @@ import java.util.Map;
 
 public class ParkingLot {
     private int capacity;
+
     private Map<ParkingTicket,Car> parkingTicketCarMap = new HashMap<>();
+
+    public int getAvailablePosition() {
+        return this.capacity - parkingTicketCarMap.size();
+    }
 
     public int getCapacity() {
         return capacity;
@@ -26,8 +31,9 @@ public class ParkingLot {
     public boolean isFull(){
         return this.getCapacity() <= parkingTicketCarMap.size();
     }
-    public ParkingTicket park(Car car) throws NotEnoughPositionException{
 
+
+    public ParkingTicket park(Car car) throws NotEnoughPositionException{
         if (isFull()){
             throw new NotEnoughPositionException();
         }
