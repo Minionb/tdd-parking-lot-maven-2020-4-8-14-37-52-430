@@ -14,7 +14,6 @@ import static org.junit.Assert.*;
 
 public class ParkingBoyTest {
     private ParkingLot parkingLot;
-    private int Default_Parking_Lot_Capacity = 10;
 
     @Before
     public void setUp() throws Exception {
