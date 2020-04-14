@@ -54,7 +54,6 @@ public class ParkingBoyTest {
         Car fetchedCar = parkingBoy.fetch(incorrectTicket);
         assertNull(fetchedCar);
 
-
     }
 
     @Test
@@ -74,10 +73,10 @@ public class ParkingBoyTest {
         expectedException.expectMessage("Not enough position.");
         parkingLot.setCapacity(1);
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+
         Car car = new Car();
         parkingBoy.park(car);
         ParkingTicket parkingTicket = parkingLot.park(new Car());
-
         assertNull(parkingTicket);
 
     }
@@ -88,9 +87,9 @@ public class ParkingBoyTest {
         ParkingLot secondParkingLot = new ParkingLot();
         ParkingBoy parkingBoy = new ParkingBoy(firstParkingLot, secondParkingLot);
         parkingBoy.park(new Car());
+
         Car car = new Car();
         ParkingTicket parkingTicket = parkingBoy.park(car);
-        //Car fetchedCar = secondParkingLot.fetch(parkingTicket);
         Car fetchedCar = parkingBoy.fetch(parkingTicket);
         assertEquals(car, fetchedCar);
     }
@@ -103,7 +102,7 @@ public class ParkingBoyTest {
 
         Car car = new Car();
         ParkingTicket parkingTicket = smartParkingBoy.park(car);
-        Car fetchedCar = secondParkingLot.fetch(parkingTicket);
+        Car fetchedCar = smartParkingBoy.fetch(parkingTicket);
         assertEquals(car, fetchedCar);
     }
 
@@ -116,9 +115,10 @@ public class ParkingBoyTest {
         for (int index = 0; index < 4; index++) {
             firstParkingLot.park(new Car());
         }
+
         Car car = new Car();
         ParkingTicket parkingTicket = superSmartParkingBoy.park(car);
-        Car fetchedCar = secondParkingLot.fetch(parkingTicket);
+        Car fetchedCar = superSmartParkingBoy.fetch(parkingTicket);
         assertEquals(car, fetchedCar);
     }
 }
