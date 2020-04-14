@@ -19,11 +19,8 @@ public class ParkingBoy {
 
 
     public ParkingTicket park(Car car) throws NotEnoughPositionException {
-        ParkingLot parkingLotSelection = this.parkingLots.stream().filter(parkingLot -> !parkingLot.isFull()).findFirst().orElse(null);
+        ParkingLot parkingLotSelection = this.parkingLots.stream().filter(parkingLot -> !parkingLot.isFull()).findFirst().orElseThrow(NotEnoughPositionException :: new );
 
-        if (parkingLotSelection == null) {
-            throw new NotEnoughPositionException();
-        }
         return parkingLotSelection.park(car);
     }
 
