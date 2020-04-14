@@ -17,7 +17,7 @@ public class ParkingLot {
     }
 
     public double getAvailablePosition() {
-        return (double) (this.capacity - parkingTicketCarMap.size()) / this.capacity;
+        return (double) getEmptyPosition() / this.capacity;
     }
 
     public int getCapacity() {
@@ -41,7 +41,7 @@ public class ParkingLot {
     }
 
 
-    public ParkingTicket park(Car car) throws NotEnoughPositionException {
+    public ParkingTicket park(Car car) {
         if (isFull()) {
             throw new NotEnoughPositionException();
         }
@@ -50,7 +50,7 @@ public class ParkingLot {
         return parkingTicket;
     }
 
-    public Car fetch(ParkingTicket parkingTicket) throws UnrecognizedParkingTicketException, NoTicketException {
+    public Car fetch(ParkingTicket parkingTicket) {
         if (parkingTicket == null) {
             throw new NoTicketException();
         }
@@ -59,8 +59,7 @@ public class ParkingLot {
             throw new UnrecognizedParkingTicketException();
         }
 
-        Car car = this.parkingTicketCarMap.remove(parkingTicket);
-        return car;
+        return this.parkingTicketCarMap.remove(parkingTicket);
     }
 
 

@@ -90,7 +90,8 @@ public class ParkingBoyTest {
         parkingBoy.park(new Car());
         Car car = new Car();
         ParkingTicket parkingTicket = parkingBoy.park(car);
-        Car fetchedCar = secondParkingLot.fetch(parkingTicket);
+        //Car fetchedCar = secondParkingLot.fetch(parkingTicket);
+        Car fetchedCar = parkingBoy.fetch(parkingTicket);
         assertEquals(car, fetchedCar);
     }
 

@@ -12,11 +12,8 @@ public class SmartParkingBoy extends ParkingBoy {
     @Override
     public ParkingTicket park(Car car) throws NotEnoughPositionException {
 
-        ParkingLot parkingLotSelection = getParkingLots().stream().max(Comparator.comparing(parkingLot -> parkingLot.getEmptyPosition())).get();
+        ParkingLot parkingLotSelection = getParkingLots().stream().max(Comparator.comparing(ParkingLot::getEmptyPosition)).orElseThrow(NotEnoughPositionException::new);
 
-        if (parkingLotSelection == null) {
-            throw new NotEnoughPositionException();
-        }
         return parkingLotSelection.park(car);
     }
 }

@@ -27,10 +27,15 @@ public class ParkingBoy {
         return parkingLotSelection.park(car);
     }
 
+    public ParkingLot selectLot(){
+        ParkingLot parkingLotSelection = this.parkingLots.stream().filter(parkingLot -> !parkingLot.isFull()).findFirst().orElse(null);
+        return parkingLotSelection;
+    }
+
 
     public Car fetch(ParkingTicket parkingTicket) throws UnrecognizedParkingTicketException, NotEnoughPositionException {
 
-        return this.parkingLots.get(0).fetch(parkingTicket);
+        return selectLot().fetch(parkingTicket);
     }
 
 }
