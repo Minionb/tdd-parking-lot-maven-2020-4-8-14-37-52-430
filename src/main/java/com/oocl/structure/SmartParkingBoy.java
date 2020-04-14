@@ -20,8 +20,7 @@ public class SmartParkingBoy extends ParkingBoy {
 
     @Override
     public ParkingLot selectLot() {
-        ParkingLot parkingLotSelection = getParkingLots().stream().max(Comparator.comparing(ParkingLot::getEmptyPosition)).orElseThrow(NotEnoughPositionException::new);
-        return parkingLotSelection;
+        return getParkingLots().stream().max(Comparator.comparing(ParkingLot::getEmptyPosition)).orElseThrow(NotEnoughPositionException::new);
     }
 
     @Override
