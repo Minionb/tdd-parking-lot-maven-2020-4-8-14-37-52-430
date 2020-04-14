@@ -16,7 +16,7 @@ public class ParkingLot {
         return this.capacity - parkingTicketCarMap.size();
     }
 
-    public double getAvailablePosition() {
+    public double getRemainingRatio() {
         return (double) getEmptyPosition() / this.capacity;
     }
 
