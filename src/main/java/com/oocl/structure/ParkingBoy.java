@@ -25,13 +25,12 @@ public class ParkingBoy {
     }
 
     public ParkingLot selectLot(){
-        ParkingLot parkingLotSelection = this.parkingLots.stream().filter(parkingLot -> !parkingLot.isFull()).findFirst().orElse(null);
+        ParkingLot parkingLotSelection = this.parkingLots.stream().filter(parkingLot -> !parkingLot.isFull()).findFirst().orElseThrow(NotEnoughPositionException :: new );
         return parkingLotSelection;
     }
 
 
     public Car fetch(ParkingTicket parkingTicket) throws UnrecognizedParkingTicketException, NotEnoughPositionException {
-
         return selectLot().fetch(parkingTicket);
     }
 
